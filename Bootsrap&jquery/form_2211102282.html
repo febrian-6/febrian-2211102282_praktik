@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Form Validasi</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="bg-dark position-relative container-fluid" style="height: 100vh;">
+  <div class="container text-center bg-light w-25 border px-2 py-4 rounded-3 position-absolute top-50 start-50 translate-middle">
+    <h2 class="my-2"><b>Validasi</b> </h2>
+    <form id="ValidForm">
+      <div class="mb-3 text-start">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" placeholder="Masukan Username">
+        <div class="invalid-feedback">
+          Username tidak boleh kosong.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-info w-75">LOGIN</button>
+    </form>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $('#ValidForm').on('submit', function(e) {
+      e.preventDefault();
+
+      var username = $('#username').val().trim();
+
+      if (username === '') {
+        $('#username').addClass('is-invalid');
+      } else {
+        $('#username').removeClass('is-invalid');
+        alert('Validasi berhasil!');
+      }
+    });
+
+    $('#username').on('input', function() {
+      if ($(this).val().trim() !== '') {
+        $(this).removeClass('is-invalid');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
